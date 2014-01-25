@@ -13,7 +13,7 @@ public class Maze2 {
 	static UltrasonicSensor sonar = new UltrasonicSensor(SensorPort.S4);
 	static int[] scanArray = new int[10];
 	static int rotateValue;
-	static int scanCount;
+	static int scanCount = 0;
 	static int largestScan;
 
 	public static void main(String[] args) {
@@ -105,15 +105,10 @@ public class Maze2 {
 	}
 	
 	public static void scan(){
-		
-		 scanCount = 0;
 		 	 
-		 for(int i = 0; i < 10; i++){
-			 if(scanCount == i){
-				 scanArray[i] = sonar.getDistance();
-			 }
-			 scanCount++;
-		 }
+		scanArray[scanCount] = sonar.getDistance();
+
+		scanCount++;
 	}
 	
 	public static void getLargestScan(){
