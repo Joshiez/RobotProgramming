@@ -12,7 +12,6 @@ public class Maze2 {
 	TouchSensor bump = new TouchSensor(SensorPort.S1);
 	static UltrasonicSensor sonar = new UltrasonicSensor(SensorPort.S4);
 	static int[] scanArray = new int[10];
-	static int[] scanArrayList = new int[10];
 	static int rotateValue;
 	static int scanCount;
 	static int largestScan;
@@ -48,17 +47,36 @@ public class Maze2 {
 	public static void direction(){
 		
 		if(rotateValue == 0){
-			pilot.rotate(45);
+			pilot.rotate(20);
 		}
 		if(rotateValue == 1){
-			pilot.rotate(90);
+			pilot.rotate(40);
 		}
 		if(rotateValue == 2){
-			pilot.rotate(-90);
+			pilot.rotate(60);
 		}
 		if(rotateValue == 3){
-			pilot.rotate(-45);
+			pilot.rotate(80);
 		}
+		if(rotateValue == 4){
+			pilot.rotate(100);
+		}
+		if(rotateValue == 5){
+			pilot.rotate(-20);
+		}
+		if(rotateValue == 6){
+			pilot.rotate(-40);
+		}
+		if(rotateValue == 7){
+			pilot.rotate(-60);
+		}
+		if(rotateValue == 8){
+			pilot.rotate(-80);
+		}
+		if(rotateValue == 9){
+			pilot.rotate(-100);
+		}
+	
 	}
 	
 	public static void scanArea(){
@@ -101,7 +119,7 @@ public class Maze2 {
 	public static void getLargestScan(){
 		
 		largestScan = 0;
-		for(int i = 0; i < 4; i++){
+		for(int i = 0; i < 10; i++){
 			if(scanArray[i] > largestScan){
 				largestScan = scanArray[i];
 				rotateValue = i;
@@ -115,13 +133,14 @@ public class Maze2 {
 	}
 	
 	public static void scanReset(){
-		for(int i = 0; i < 4; i++){
+		for(int i = 0; i < 10; i++){
 			scanArray[i] = 0;
 		}
 		scanCount = 0;
 	}
 	
-	
-	
-
 }
+
+
+
+
